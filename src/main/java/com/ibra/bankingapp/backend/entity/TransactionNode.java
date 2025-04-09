@@ -1,4 +1,4 @@
-package com.ibra.bankingapp.entity;
+package com.ibra.bankingapp.backend.entity;
 
 public class TransactionNode {
     private Transaction transaction;

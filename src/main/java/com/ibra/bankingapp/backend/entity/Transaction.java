@@ -1,4 +1,4 @@
-package com.ibra.bankingapp.entity;
+package com.ibra.bankingapp.backend.entity;
 
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
@@ -33,7 +33,7 @@ public class Transaction {
 
     @Override
     public String toString() {
-        return String.format("ID: %d | Type: %s | Amount: $%.2f | Balance: $%.2f | Time: %s",
+        return String.format("ID: %d | Type: %s | Amount: Ghs%.2f | Balance: Ghs%.2f | Time: %s",
                 transactionId, type, amount, balanceAfterTransaction,
                 timestamp.format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss")));
     }

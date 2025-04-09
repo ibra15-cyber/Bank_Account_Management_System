@@ -1,4 +1,4 @@
-package com.ibra.bankingapp.service.inter;
+package com.ibra.bankingapp.backend.inter;
 
 public interface BankOperations {
     boolean deposit(double amount);

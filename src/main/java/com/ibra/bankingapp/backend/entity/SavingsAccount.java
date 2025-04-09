@@ -1,6 +1,6 @@
-package com.ibra.bankingapp.entity;
+package com.ibra.bankingapp.backend.entity;
 
-import com.ibra.bankingapp.service.inter.InterestBearing;
+import com.ibra.bankingapp.backend.inter.InterestBearing;
 
 public class SavingsAccount extends Account implements InterestBearing {
     private double minimumBalance;
@@ -48,7 +48,7 @@ public class SavingsAccount extends Account implements InterestBearing {
     @Override
     public String getAccountDetails() {
         return super.getAccountDetails() +
-                String.format("\nAccount Type: Savings\nMinimum Balance: $%.2f\nInterest Rate: %.2f%%",
+                String.format("\nAccount Type: Savings\nMinimum Balance: Ghs%.2f\nInterest Rate: %.2f%%",
                         minimumBalance, interestRate * 100);
     }
 

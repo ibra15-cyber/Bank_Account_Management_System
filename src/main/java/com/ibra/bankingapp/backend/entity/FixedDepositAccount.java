@@ -1,6 +1,6 @@
-package com.ibra.bankingapp.entity;
+package com.ibra.bankingapp.backend.entity;
 
-import com.ibra.bankingapp.service.inter.InterestBearing;
+import com.ibra.bankingapp.backend.inter.InterestBearing;
 
 import java.time.LocalDate;
 
@@ -9,8 +9,11 @@ public class FixedDepositAccount extends Account implements InterestBearing {
     private LocalDate maturityDate;
     private boolean hasMatured;
 
-    public FixedDepositAccount(String accountNumber, String accountHolderName, double depositAmount,
-                               double interestRate, int termInMonths) {
+    public FixedDepositAccount(String accountNumber,
+                               String accountHolderName,
+                               double depositAmount,
+                               double interestRate,
+                               int termInMonths) {
         super(accountNumber, accountHolderName, depositAmount);
         this.interestRate = interestRate;
         this.maturityDate = LocalDate.now().plusMonths(termInMonths);

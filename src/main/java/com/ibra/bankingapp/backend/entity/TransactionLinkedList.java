@@ -1,4 +1,4 @@
-package com.ibra.bankingapp.entity;
+package com.ibra.bankingapp.backend.entity;
 
 import java.util.ArrayList;
 import java.util.List;

@@ -1,4 +1,4 @@
-package com.ibra.bankingapp.entity;
+package com.ibra.bankingapp.backend.entity;
 
 public class CurrentAccount extends Account {
     private double overdraftLimit;
@@ -30,7 +30,7 @@ public class CurrentAccount extends Account {
     @Override
     public String getAccountDetails() {
         return super.getAccountDetails() +
-                String.format("\nAccount Type: Current\nOverdraft Limit: $%.2f", overdraftLimit);
+                String.format("\nAccount Type: Current\nOverdraft Limit: Ghs%.2f", overdraftLimit);
     }
 
     // Getter

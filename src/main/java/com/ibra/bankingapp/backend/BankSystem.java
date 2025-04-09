@@ -1,6 +1,6 @@
-package com.ibra.bankingapp.service.system;
+package com.ibra.bankingapp.backend;
 
-import com.ibra.bankingapp.entity.*;
+import com.ibra.bankingapp.backend.entity.*;
 
 import java.util.*;
 
@@ -11,8 +11,10 @@ public class BankSystem {
         this.accounts = new HashMap<>();
     }
 
-    public String createSavingsAccount(String holderName, double initialDeposit,
-                                       double minimumBalance, double interestRate) {
+    public String createSavingsAccount(String holderName,
+                                       double initialDeposit,
+                                       double minimumBalance,
+                                       double interestRate) {
         String accountNumber = generateAccountNumber();
         SavingsAccount account = new SavingsAccount(
                 accountNumber, holderName, initialDeposit, minimumBalance, interestRate

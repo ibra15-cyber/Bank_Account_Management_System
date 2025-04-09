@@ -1,6 +1,7 @@
-package com.ibra.bankingapp.entity;
+package com.ibra.bankingapp.backend.entity;
 
-import com.ibra.bankingapp.service.inter.BankOperations;
+
+import com.ibra.bankingapp.backend.inter.BankOperations;
 
 import java.util.List;
 
@@ -49,7 +50,7 @@ public abstract class Account implements BankOperations {
 
     @Override
     public String getAccountDetails() {
-        return String.format("Account Number: %s\nAccount Holder: %s\nCurrent Balance: $%.2f",
+        return String.format("Account Number: %s\nAccount Holder: %s\nCurrent Balance: Ghs%.2f",
                 accountNumber, accountHolderName, balance);
     }
 

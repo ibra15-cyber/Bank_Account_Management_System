@@ -1,8 +1,8 @@
 package com.ibra.bankingapp;
 
-import com.ibra.bankingapp.entity.FixedDepositAccount;
-import com.ibra.bankingapp.entity.Transaction;
-import com.ibra.bankingapp.service.system.BankSystem;
+import com.ibra.bankingapp.backend.entity.FixedDepositAccount;
+import com.ibra.bankingapp.backend.entity.Transaction;
+import com.ibra.bankingapp.backend.BankSystem;
 
 import javafx.application.Application;
 import javafx.collections.FXCollections;
@@ -38,6 +38,7 @@ public class BankApplication extends Application {
 
         Scene scene = new Scene(tabPane, 800, 600);
         primaryStage.setTitle("Bank Account Management System");
+        primaryStage.setIconified(true);
         primaryStage.setScene(scene);
         primaryStage.show();
     }
@@ -203,7 +204,7 @@ public class BankApplication extends Application {
         // Transaction history section
         Label historyLabel = new Label("Transaction History:");
         ListView<String> historyList = new ListView<>();
-        historyList.setPrefHeight(200);
+        historyList.setPrefHeight(400);
 
         accountCombo.setOnAction(e -> {
             String accountNumber = accountCombo.getValue();
@@ -225,7 +226,7 @@ public class BankApplication extends Application {
                 boolean success = bankSystem.depositToAccount(accountNumber, amount);
 
                 if (success) {
-                    resultLabel.setText("Deposit successful. New balance: $" +
+                    resultLabel.setText("Deposit successful. New balance: Ghs" +
                             String.format("%.2f", bankSystem.checkBalance(accountNumber)));
                     updateTransactionHistory(accountNumber, historyList);
                 } else {
@@ -250,7 +251,7 @@ public class BankApplication extends Application {
                 boolean success = bankSystem.withdrawFromAccount(accountNumber, amount);
 
                 if (success) {
-                    resultLabel.setText("Withdrawal successful. New balance: $" +
+                    resultLabel.setText("Withdrawal successful. New balance: Ghs" +
                             String.format("%.2f", bankSystem.checkBalance(accountNumber)));
                     updateTransactionHistory(accountNumber, historyList);
                 } else {
@@ -278,7 +279,7 @@ public class BankApplication extends Application {
             }
 
             double balance = bankSystem.checkBalance(accountNumber);
-            resultLabel.setText("Current Balance: $" + String.format("%.2f", balance));
+            resultLabel.setText("Current Balance: Ghs" + String.format("%.2f", balance));
         });
 
         HBox accountSelectionBox = new HBox(10);
@@ -344,7 +345,7 @@ public class BankApplication extends Application {
     }
 
     private void updateTransactionHistory(String accountNumber, ListView<String> historyList) {
-        List<Transaction> transactions = bankSystem.getRecentTransactions(accountNumber, 10);
+        List<Transaction> transactions = bankSystem.getRecentTransactions(accountNumber, 50);
         ObservableList<String> items = FXCollections.observableArrayList();
 
         for (Transaction transaction : transactions) {
