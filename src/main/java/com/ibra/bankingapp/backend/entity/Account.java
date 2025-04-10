@@ -6,6 +6,7 @@ import com.ibra.bankingapp.backend.inter.BankOperations;
 import java.util.List;
 
 public abstract class Account implements BankOperations {
+    //states/instance variable similar to all accounts
     protected String accountNumber;
     protected String accountHolderName;
     protected double balance;
@@ -18,6 +19,7 @@ public abstract class Account implements BankOperations {
         this.transactionHistory = new TransactionLinkedList();
 
         // Record initial deposit as a transaction
+        //transaction(type, deposit, balance after transaction)
         if (initialDeposit > 0) {
             this.transactionHistory.addTransaction(
                     new Transaction("INITIAL_DEPOSIT", initialDeposit, initialDeposit)
@@ -25,7 +27,8 @@ public abstract class Account implements BankOperations {
         }
     }
 
-    // Concrete implementation of BankOperations methods
+    // behaviour common to all account types implemented
+    // Concrete implementation of BankOperations/interface methods
     @Override
     public boolean deposit(double amount) {
         if (amount <= 0) {

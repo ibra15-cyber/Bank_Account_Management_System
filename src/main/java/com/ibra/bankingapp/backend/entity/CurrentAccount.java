@@ -1,6 +1,7 @@
 package com.ibra.bankingapp.backend.entity;
 
 public class CurrentAccount extends Account {
+    //current account has overdraft
     private double overdraftLimit;
 
     public CurrentAccount(String accountNumber, String accountHolderName, double initialDeposit,
@@ -16,11 +17,12 @@ public class CurrentAccount extends Account {
         }
 
         // Check if withdrawal exceeds overdraft limit
+        //you can't withdraw when your account is less the amount you are seeking
         if (balance - amount < -overdraftLimit) {
             return false;
         }
 
-        balance -= amount;
+        balance -= amount; //go ahead to subtract if we got enough balance
         transactionHistory.addTransaction(
                 new Transaction("WITHDRAWAL", amount, balance)
         );

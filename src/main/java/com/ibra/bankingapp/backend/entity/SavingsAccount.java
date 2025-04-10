@@ -3,6 +3,7 @@ package com.ibra.bankingapp.backend.entity;
 import com.ibra.bankingapp.backend.inter.InterestBearing;
 
 public class SavingsAccount extends Account implements InterestBearing {
+    //savings account has minimum balance and interest rate
     private double minimumBalance;
     private double interestRate;
 
@@ -16,7 +17,7 @@ public class SavingsAccount extends Account implements InterestBearing {
     @Override
     public boolean withdraw(double amount) {
         if (amount <= 0) {
-            return false;
+            return false; //you can't withdraw when your account is less
         }
 
         // Check if withdrawal would violate minimum balance
@@ -25,6 +26,8 @@ public class SavingsAccount extends Account implements InterestBearing {
         }
 
         balance -= amount;
+
+        //then add it to transactions
         transactionHistory.addTransaction(
                 new Transaction("WITHDRAWAL", amount, balance)
         );

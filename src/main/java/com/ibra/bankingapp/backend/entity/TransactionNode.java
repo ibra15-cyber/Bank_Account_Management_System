@@ -1,11 +1,11 @@
 package com.ibra.bankingapp.backend.entity;
 
 public class TransactionNode {
-    private Transaction transaction;
-    private TransactionNode next;
+    private Transaction transaction; //like data
+    private TransactionNode next; //like next
 
     public TransactionNode(Transaction transaction) {
-        this.transaction = transaction;
+        this.transaction = transaction; //initializing transaction used to create a new transaction
         this.next = null;
     }
 

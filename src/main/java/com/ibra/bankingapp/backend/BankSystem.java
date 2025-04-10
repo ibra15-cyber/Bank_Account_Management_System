@@ -5,12 +5,14 @@ import com.ibra.bankingapp.backend.entity.*;
 import java.util.*;
 
 public class BankSystem {
+    //we create a map of account number and Account
     private Map<String, Account> accounts;
 
     public BankSystem() {
         this.accounts = new HashMap<>();
     }
 
+    //fn to create savings account
     public String createSavingsAccount(String holderName,
                                        double initialDeposit,
                                        double minimumBalance,
@@ -23,6 +25,7 @@ public class BankSystem {
         return accountNumber;
     }
 
+    //fn to create current account
     public String createCurrentAccount(String holderName, double initialDeposit,
                                        double overdraftLimit) {
         String accountNumber = generateAccountNumber();
@@ -33,6 +36,7 @@ public class BankSystem {
         return accountNumber;
     }
 
+    //fn to create fixed deposit account
     public String createFixedDepositAccount(String holderName, double depositAmount,
                                             double interestRate, int termInMonths) {
         String accountNumber = generateAccountNumber();
@@ -43,6 +47,7 @@ public class BankSystem {
         return accountNumber;
     }
 
+    //a fn we can call you do withdrawal
     public boolean depositToAccount(String accountNumber, double amount) {
         Account account = accounts.get(accountNumber);
         if (account == null) {
@@ -51,6 +56,7 @@ public class BankSystem {
         return account.deposit(amount);
     }
 
+    //a fn we can call you do withdrawal
     public boolean withdrawFromAccount(String accountNumber, double amount) {
         Account account = accounts.get(accountNumber);
         if (account == null) {
@@ -59,6 +65,7 @@ public class BankSystem {
         return account.withdraw(amount);
     }
 
+    //a fn to call to check balance
     public double checkBalance(String accountNumber) {
         Account account = accounts.get(accountNumber);
         if (account == null) {
@@ -67,6 +74,7 @@ public class BankSystem {
         return account.checkBalance();
     }
 
+    //fn to call account details
     public String getAccountDetails(String accountNumber) {
         Account account = accounts.get(accountNumber);
         if (account == null) {
@@ -75,6 +83,7 @@ public class BankSystem {
         return account.getAccountDetails();
     }
 
+    //fn to call all recent transactions
     public List<Transaction> getRecentTransactions(String accountNumber, int count) {
         Account account = accounts.get(accountNumber);
         if (account == null) {
@@ -103,13 +112,18 @@ public class BankSystem {
         }
     }
 
+    //generating account number
     private String generateAccountNumber() {
         // Simple implementation - in a real system, this would be more sophisticated
         return "ACC" + (100000 + new Random().nextInt(900000));
     }
 
+    //get all account numbers it returns the account number and the account
     public List<String> getAllAccountNumbers() {
-        return new ArrayList<>(accounts.keySet());
+         List<String> str = new ArrayList<>(accounts.keySet());
+        System.out.println(str.toString());
+        return str;
+
     }
 
     public Account getAccount(String accountNumber) {

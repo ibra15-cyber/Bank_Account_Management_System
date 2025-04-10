@@ -5,6 +5,7 @@ import com.ibra.bankingapp.backend.inter.InterestBearing;
 import java.time.LocalDate;
 
 public class FixedDepositAccount extends Account implements InterestBearing {
+    //Fixed account has interest rate, maturityDate
     private double interestRate;
     private LocalDate maturityDate;
     private boolean hasMatured;
@@ -22,13 +23,13 @@ public class FixedDepositAccount extends Account implements InterestBearing {
 
     @Override
     public boolean withdraw(double amount) {
-        // Cannot withdraw before maturity date
+        //you can't withdraw when the account has not matured yet
         if (!hasMatured && LocalDate.now().isBefore(maturityDate)) {
             return false;
         }
 
         if (amount <= 0 || amount > balance) {
-            return false;
+            return false; //you can't withdraw when your account is less
         }
 
         balance -= amount;
@@ -40,8 +41,7 @@ public class FixedDepositAccount extends Account implements InterestBearing {
 
     @Override
     public boolean deposit(double amount) {
-        // Fixed deposit accounts don't allow additional deposits
-        return false;
+        return false;         // Fixed deposit accounts don't allow additional deposits
     }
 
     @Override
@@ -49,6 +49,7 @@ public class FixedDepositAccount extends Account implements InterestBearing {
         return balance * interestRate;
     }
 
+    //fixed account just like savings attracts interest
     @Override
     public void applyInterest() {
         double interest = calculateInterest();
@@ -58,6 +59,7 @@ public class FixedDepositAccount extends Account implements InterestBearing {
         );
     }
 
+    //if the account has matured and the time is before maturity isn't true aka has matured
     public void checkMaturity() {
         if (!hasMatured && !LocalDate.now().isBefore(maturityDate)) {
             hasMatured = true;

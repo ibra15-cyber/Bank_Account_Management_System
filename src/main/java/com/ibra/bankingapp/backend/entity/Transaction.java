@@ -13,7 +13,7 @@ public class Transaction {
     // Constructor, getters, setters
     public Transaction(String type, double amount, double balanceAfterTransaction) {
         this.transactionId = generateId();
-        this.type = type;
+        this.type = type; //whether deposit, withdrawal or interest
         this.amount = amount;
         this.balanceAfterTransaction = balanceAfterTransaction;
         this.timestamp = LocalDateTime.now();
